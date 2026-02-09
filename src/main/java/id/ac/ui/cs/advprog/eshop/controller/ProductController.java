@@ -51,4 +51,10 @@ public class ProductController {
         service.edit(product); // repo kamu replace by id
         return "redirect:/product/list";
     }
+
+    @GetMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable String productId) {
+        service.delete(productId);
+        return "redirect:/product/list";
+    }
 }
