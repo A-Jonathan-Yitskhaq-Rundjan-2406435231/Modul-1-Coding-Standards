@@ -20,16 +20,32 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    public Product findById(String id){
-        for(Product product : productData){
-            if(product.getProductId().equals(id)){
+    public Product findById(String id) {
+        for (Product product : productData) {
+            if (product.getProductId().equals(id)) {
                 return product;
             }
         }
         return null;
     }
 
+    public void deleteById(String id) {
+        for (int i = 0; i < productData.size(); i++) {
+            if (productData.get(i).getProductId().equals(id)) {
+                productData.remove(i);
+                break;
+            }
+        }
+    }
 
-
+    public Product edit(Product updatedProduct) {
+        for (int i = 0; i < productData.size(); i++) {
+            Product product = productData.get(i);
+            if (product.getProductId().equals(updatedProduct.getProductId())) {
+                productData.set(i, updatedProduct);
+                return updatedProduct;
+            }
+        }
+        return null;
     }
 }
